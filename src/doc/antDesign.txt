@@ -1,0 +1,95 @@
+
+import React, { useState } from 'react'
+import './HomePage.css'
+import ProductList from '../../component/list/ProductList'
+import StstusTab from '../../component/tab/StstusTab'
+//  import {IoCart, IoHome, IoRemove,} from "react-icons/io5";
+import {Button} from 'antd'
+import {AppleFilled, DeleteFilled, FileAddFilled, UsergroupAddOutlined } from '@ant-design/icons'
+import CarouselHomeSlider from '../../component/carousel/CarouselHomeSlider'
+
+export default function HomePage() {
+  const [products, setProducts] = useState([
+        {
+          id : 101,
+          p_name : "Macbook Pro 2021",
+          p_price : 1600,
+          p_description : "256 SSD, 8 GB",
+          image : "https://images.khmer24.co/23-08-17/465836-macbook-pro-2021-m1-pro-chip-1692288239-78166356-b.jpg"
+        },
+        {
+          id : 102,
+          p_name : "Macbook Pro 2022",
+          p_price : 1700,
+          p_description : "512 SSD, 32 GB",
+          image : "https://images.khmer24.co/23-07-29/macbook-pro-2022-m2-290063169060295058454167-d.jpg"
+        },
+        {
+          id : 103,
+          p_name : "Macbook Pro 2023",
+          p_price : 1800,
+          p_description : "1 TB SSD, 64 GB",
+          image : "https://images.khmer24.co/23-08-17/465836-macbook-pro-2021-m1-pro-chip-1692288239-78166356-b.jpg"
+        },
+        {
+          id : 104,
+          p_name : "Macbook Pro 2024",
+          p_price : 1900,
+          p_description : "2 TB SSD, 128 GB",
+          image : "https://images.khmer24.co/23-07-29/macbook-pro-2022-m2-290063169060295058454167-d.jpg"
+        }
+  ])
+  const [loading, setLoading] = useState(false)
+
+  const onClickBtntest = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000);
+  }
+
+  return (
+   <main className='max-w-6xl mx-auto Manrope mt-3'>
+    <h1 className='text-center font-bold text-3xl'>List of Product</h1>
+    <CarouselHomeSlider/>
+   <div className='space-x-8 flex'>
+      <Button 
+        onClick={onClickBtntest}
+        loading={loading}
+        className='bg-blue-600' 
+        type='primary' 
+        size='large'>Add me <FileAddFilled />  </Button>
+      <Button size='large'>
+        Adroid  <UsergroupAddOutlined />
+      </Button>
+      <Button size='large' className='p-0 flex' danger>Remove  <DeleteFilled className='pt-[6px]' /> </Button>
+     
+      <button className='border p-2 rounded-md px-4 hover:shadow'> Add to Cart <AppleFilled /> </button>
+   </div>
+   
+          <div className='max-w-6xl flex justify-between mx-auto'>
+          {
+            products.map((item, index)=> {
+              return (
+                <div className='mt-3' key={index}>
+                  <ProductList
+                      name = {item.p_name}
+                      price = {item.p_price}
+                      desc = {item.p_description}
+                      image = {item.image}
+                  />
+                </div>
+              )
+            })
+          }
+          </div>
+         
+          
+          <div className='mt-5'>
+            <StstusTab/>
+          </div>
+   </main>
+  )
+}
+
+// react plugin antd design library end video

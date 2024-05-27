@@ -1,0 +1,153 @@
+
+import React from 'react'
+import product from '../../component/data/Product'
+import './HomePage.css'
+import {IoCart,} from "react-icons/io5";
+
+export default function HomePage() {
+  return (
+   <main className='max-w-5xl mx-auto Manrope'>
+    <h1 className='text-center text-3xl font-bold p-3'>List of Products</h1>
+     <div className='flex justify-between'>
+        { product.map((item,index)=>(
+          
+          <div key={index} className='w-56 bg-blue-300 p-3 rounded-md'>
+              <div className='w-full h-56'>
+                  <img src={item.image} alt="" className='w-full h-full object-cover'/>
+              </div>
+              <div className='text-2xl font-bold'>
+                {index+1}. {item.id}- {item.name}
+              </div> 
+              <div className='text-xl flex'>
+                ${item.price} <IoCart className=''/>
+              </div>
+              <div className='text-xl'>
+                 {item.qty} PCS
+              </div>
+              <div className='flex flex-wrap gap-2 w-[80%]'>
+                 {item.category.map((item1, index1) => (
+                    <div key={index1} className='p-1' style={{backgroundColor:item1}}>
+                      {item1}
+                    </div>
+                 ))} 
+              </div>
+          </div>
+        ))}
+     </div>
+   </main>
+  )
+}
+
+
+
+// State in ReactJS import declear useState change state use State
+  const [name, setName] = useState("Sok");
+  const [gender, setGender] = useState("Male");
+  const [age, getAge] = useState(20);
+  const [courses, setCourses] = useState(["ReactJS", "NodeJS", "MongoDB", "MySQL"]);
+  const [product, setProduct] = useState({
+        name: "Iphone 12",
+        price: 1000,
+        color: "Black",
+        isStock: true
+  }) 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [result, setResult] = useState(0);
+  const [box, setBox] = useState([]);
+
+  const onChangeInfo = () => {
+    setName("Bonana");
+    setGender("Female");
+    getAge(age + 1);
+  }
+
+  const onLogin = () => {
+    alert("Username: " + username + " Password: " + password);
+  } 
+
+  const onChangeUsername = (event) => {
+    setUsername(event.target.value);
+  }
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  }
+
+  const onChangeX = (event) => {
+    setX(event.target.value);
+  }
+
+  const onChangeY = (event) => {
+    setY(event.target.value);
+  }
+
+  const addStrToCapitalize = (str) => {
+    const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+    return str2;
+
+  }
+
+  const onClickOperation = (operation) => {
+      // switch Statement
+      // switch(operation) {
+      //   case "sum":
+      //     let sum =  Number(x) + Number(y);
+      //     setResult("add : " + sum);
+      //     break;
+      //   case "sub":
+      //     let sub =  Number(x) - Number(y);
+      //     setResult("sub : " + sub);
+      //     break;
+      //   case "mul":
+      //     let mul =  Number(x) * Number(y);
+      //     setResult("mul : " + mul);
+      //     break;
+      //   case "div":
+      //     let div =  Number(x) / Number(y);
+      //     setResult("div : " + div);
+      //     break;
+      //   default:
+      //     setResult("Error");
+      // }
+
+      // if Statement     
+      let data = 0;
+      let dataX = Number(x), dataY = Number(y);
+      if(operation === "sum") {
+        data = dataX + dataY;
+      } else if(operation === "sub") {
+        data = dataX - dataY;
+      } else if(operation === "mul") {
+        data = dataX * dataY;
+      } else if(operation === "div") {
+        data = dataX / dataY;
+      } 
+      setResult(operation.toUpperCase() + " : " + data);
+      // setResult(addStrToCapitalize(operation) + " : " + data);
+  }
+
+  const onClickAddbox = () => {
+    const tmp = box;
+    console.log(tmp);
+    tmp.push(1);
+    setBox([...tmp]);
+  } 
+
+  
+ {/* <ProductList
+        name = "Macbook Pro 2021"
+        price = {1600}
+      />
+
+      <ProductList
+        name = "Macbook Pro 2022"
+        price = {1700}
+      />
+  
+      <ProductList
+        name = "Macbook Pro 2023"
+        price = {1800} 
+      /> */}

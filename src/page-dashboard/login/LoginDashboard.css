@@ -1,0 +1,44 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bayon&family=Freehand&family=Hanuman:wght@300&family=Kdam+Thmor+Pro&family=Manrope:wght@200;300;400;500;600;700;800&family=Nokora:wght@100;300;400;700&family=Noto+Sans+Khmer:wght@300;700&family=Nova+Square&display=swap');
+
+.Manrope{
+    font-family: 'Manrope', sans-serif;
+}
+
+.input-group{
+    position: relative;
+    margin: 20px 0;
+}
+.input-group label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #215fa7;
+    margin: 0 5px;
+    pointer-events: none;
+    transition: 0.5s ease;
+    padding: 0 10px;
+    z-index: 1111;
+}
+.input-group input{
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 16px;
+    border: 2px solid #215fa7;
+    border-radius: 5px;
+    outline: none;
+    background: transparent;
+    color: #110b0b;
+    transition: 0.1s ease;
+}
+.input-group input:focus~label,
+.input-group input:valid~label{
+    top: 0;
+    font-size: 12px;
+    background: #FFFF;
+    color: #215fa7;
+    font-weight: 700;
+}
